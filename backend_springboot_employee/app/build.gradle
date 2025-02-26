@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '3.2.2'  // ✅ Apply Spring Boot plugin
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // ✅ Explicitly specify Spring Boot versions
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.2.2'
+
+    // ✅ Ensure Lombok is configured properly
+    implementation 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    // ✅ Correct MySQL Connector version
+    implementation 'mysql:mysql-connector-java:8.0.33'
+
+    // ✅ Spring Boot test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // ✅ JUnit (if not using `libs.junit`)
+    testImplementation 'junit:junit:4.13.2'
+
+
+    // ✅ Guava (if not using `libs.guava`)
+    implementation 'com.google.guava:guava:32.1.2-jre'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'org.example.App'
+}
